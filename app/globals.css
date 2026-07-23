@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Premium Tech Colors */
+  --color-primary: #3B82F6;
+  --color-primary-dark: #2563EB;
+  --color-accent: #8B5CF6;
+
+  /* Dark mode backgrounds */
+  --color-dark-bg: #09090B;
+  --color-dark-surface: #111113;
+  --color-dark-card: #18181B;
+
+  /* Light mode backgrounds */
+  --color-light-bg: #FAFAFA;
+  --color-light-surface: #FFFFFF;
+  --color-light-card: #F4F4F5;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #09090B;
+  color: #FFFFFF;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode body override */
+html:not(.dark) body {
+  background-color: #FAFAFA;
+  color: #09090B;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(113, 113, 122, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(113, 113, 122, 0.6);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(63, 63, 70, 0.6);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 82, 91, 0.85);
+}
+
+/* ── Selection ────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: inherit;
+}
+
+/* ── Focus ring ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Gradient text utility ────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass card utility ───────────────────────────────────────────────── */
+.glass {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* ── Shimmer Loading Skeleton ─────────────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    #18181B 25%,
+    #27272A 50%,
+    #18181B 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+html:not(.dark) .shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    #F4F4F5 25%,
+    #E4E4E7 50%,
+    #F4F4F5 75%
+  );
+  background-size: 200% 100%;
+}
+
+
