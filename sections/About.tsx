@@ -11,7 +11,6 @@ const stats = [
   { value: "2+", label: "Years Coding" },
   { value: "10+", label: "Projects Built" },
   { value: "5+", label: "Technologies" },
-  { value: "3.82", label: "GPA" },
 ];
 
 export default function About() {
@@ -75,7 +74,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-14"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-14"
         >
           {stats.map((stat) => (
             <div

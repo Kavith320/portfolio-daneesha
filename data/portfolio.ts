@@ -84,125 +84,79 @@ export const skills = [
 
 export const projects = [
   {
-    title: "ApexTask - Collaborative Task Manager",
-    description: "A real-time, collaborative project management board featuring drag-and-drop workspace lanes, dynamic socket events, and team activity feeds.",
-    image: "/projects/apextask.png",
-    github: "https://github.com/daneeshadisnayake/apextask",
-    demo: "https://apextask-demo.vercel.app",
-    tags: ["MongoDB", "Express", "React", "Node.js", "Socket.io", "Tailwind CSS"],
+    title: "Smart Aquarium Monitoring & Controlling System",
+    description: "An IoT-based embedded solution automating aquarium environmental conditions using an ESP8266 microcontroller, Node.js backend, and Next.js frontend.",
+    image: "",
+    github: "https://lnkd.in/gBzM6bW6",
+    demo: "",
+    tags: ["IoT", "ESP8266", "Node.js", "Next.js", "MQTT"],
     features: [
-      "Real-time card movements across lanes using socket connections.",
-      "Workspace invite links and member management with custom permissions.",
-      "Rich markdown card descriptions and nesting checkbox lists.",
-      "Detailed activity log for every workspace action."
+      "Real-time temperature, light, water level & flow monitoring",
+      "Automated control of water pump, aeration motor & lighting",
+      "Scheduled smart feeding with manual override",
+      "Remote monitoring via web dashboard with alert notifications"
     ]
   },
   {
-    title: "NovaCart - Modern E-Commerce Platform",
-    description: "A premium shopping experience featuring stripe checkout, instant search filter queries, custom product dashboards, and robust session cart management.",
-    image: "/projects/novacart.png",
-    github: "https://github.com/daneeshadisnayake/novacart",
-    demo: "https://novacart-demo.vercel.app",
-    tags: ["Next.js", "React", "Node.js", "MongoDB", "Stripe API", "Tailwind CSS"],
+    title: "Modern Full-Stack Restaurant Application",
+    description: "A clean, responsive web app that helps restaurant owners manage menus, orders, and reservations all in one place with a premium glass-morphism UI.",
+    image: "",
+    github: "",
+    demo: "",
+    tags: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "SQLite"],
     features: [
-      "Stripe payment integration with secure webhook transaction logs.",
-      "Fully responsive admin analytics dashboard tracking sales and inventory.",
-      "JWT and cookie-based authentication with OAuth sign-ins.",
-      "Optimized images and lazy-loaded reviews for high performance."
-    ]
-  },
-  {
-    title: "ChromaChat - Interactive Chat Application",
-    description: "A sleek, animation-heavy chat interface containing dynamic rooms, customizable profiles, emoji reactions, and read-receipt features.",
-    image: "/projects/chromachat.png",
-    github: "https://github.com/daneeshadisnayake/chromachat",
-    demo: "https://chromachat-demo.vercel.app",
-    tags: ["React", "Express", "Node.js", "MongoDB", "Framer Motion", "Socket.io"],
-    features: [
-      "Private and group message channels with typing indicators.",
-      "Interactive emojis and reactions using smooth Framer Motion spring curves.",
-      "File and image sharing using AWS S3 bucket uploads.",
-      "Message history search and custom notification controls."
-    ]
-  },
-  {
-    title: "DevPulse - MDX Blogging Platform",
-    description: "A fast, SEO-friendly tech blog supporting interactive markdown components, newsletter sub, syntax highlights, and read time counters.",
-    image: "/projects/devpulse.png",
-    github: "https://github.com/daneeshadisnayake/devpulse",
-    demo: "https://devpulse-demo.vercel.app",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "MongoDB"],
-    features: [
-      "Write articles in markdown and embed live React playground components.",
-      "Syntax-highlighted code blocks with copy-to-clipboard actions.",
-      "Automatic dynamic sitemap and robots.txt generations.",
-      "Newsletter integration with automatic email campaigns."
+      "Menu Builder: Drag-and-drop dishes, set prices, and categorize items.",
+      "Order Dashboard: Real-time order tracking for kitchen staff.",
+      "Reservation System: Calendar view with automatic slot management.",
+      "Analytics: Simple sales reports and popular-dish insights."
     ]
   }
 ];
 
 export const experience = [
   {
-    company: "ByteWave Technologies",
-    role: "Full Stack Developer Intern",
-    duration: "June 2025 - Present",
+    company: "Dialog Axiata PLC",
+    role: "Customer Service Agent",
+    duration: "Jul 2023 - Oct 2023",
     description: [
-      "Architected REST APIs for corporate portal, reducing page load latency by 20%.",
-      "Built interactive customer feedback dashboard using MERN stack, Tailwind CSS, and Recharts.",
-      "Refactored state management to Redux Toolkit, decreasing codebase size and improving bug isolation.",
-      "Configured Docker containers for development environment, saving team members 2 hours per workspace setup."
-    ]
-  },
-  {
-    company: "Tech State Web Studio",
-    role: "Junior Web Developer",
-    duration: "September 2024 - May 2025",
-    description: [
-      "Maintained and updated customer-facing web platforms utilizing Node.js, Express, and MongoDB.",
-      "Translated Figma designs into responsive, accessible, pixel-perfect HTML/CSS layout templates.",
-      "Collaborated with graphic designers to implement CSS transitions and keyframe animations.",
-      "Optimized databases using custom MongoDB query indexing, speeding up dashboard queries by 30."
+      "Worked full-time on-site in Gampaha, Western Province, Sri Lanka."
     ]
   }
 ];
 
 export const education = [
   {
-    institution: "Tech State University",
-    degree: "B.S. in Computer Science",
-    duration: "2023 - 2027 (Expected)",
-    details: "GPA: 3.82/4.0. Active member of Computer Science Association and Web Development Club.",
+    institution: "University of Vavuniya",
+    degree: "Bachelor of Information Communication Technology honours, Information Technology",
+    duration: "Jun 2023 – Jun 2027",
+    details: "Activities and societies: Member of LEO Club",
     coursework: [
-      "Data Structures & Algorithms",
-      "Database Systems (SQL & NoSQL)",
-      "Software Engineering Principles",
-      "Operating Systems",
-      "Distributed Systems",
-      "User Interface Design"
+      "Full-Stack Development",
+      "Project Management"
     ]
+  },
+  {
+    institution: "Rathnavali Balika Vidyalaya – Gampaha",
+    degree: "High School Education",
+    duration: "Jan 2017 – Jan 2021",
+    details: "",
+    coursework: []
   }
 ];
 
 export const certificates = [
   {
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services (AWS)",
-    date: "December 2025",
-    link: "https://aws.amazon.com",
-    image: "/certificates/aws-cloud.png"
+    title: "Introduction to MongoDB",
+    issuer: "Simplilearn",
+    date: "May 2026",
+    link: "https://www.simplilearn.com",
+    image: ""
   },
   {
-    title: "Meta Front-End Developer Professional",
-    issuer: "Meta (via Coursera)",
-    date: "August 2025",
-    link: "https://coursera.org",
-    image: "/certificates/meta-frontend.png"
-  },
-  {
-    title: "MongoDB Certified Developer Associate",
-    issuer: "MongoDB University",
-    date: "April 2025",
-    link: "https://mongodb.com",
-    image: "/certificates/mongodb-associate.png"
+    title: "The Full Stack",
+    issuer: "Meta (Coursera)",
+    date: "Apr 2026",
+    link: "https://coursera.org/verify/ZUGN44FG9FLN",
+    image: ""
   }
 ];

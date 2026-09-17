@@ -52,30 +52,17 @@ export default function Education() {
                 </span>
               </div>
 
-              {/* Details + GPA */}
-              <div className="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {/* Details text */}
-                <div className="sm:col-span-2">
-                  <div className="flex items-center gap-2 mb-3">
-                    <FiStar className="text-amber-500" size={14} />
-                    <h4 className="text-xs font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-widest font-mono">
-                      Academic Details
-                    </h4>
-                  </div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    {edu.details}
-                  </p>
+              {/* Details */}
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-2 mb-3">
+                  <FiStar className="text-amber-500" size={14} />
+                  <h4 className="text-xs font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-widest font-mono">
+                    Academic Details
+                  </h4>
                 </div>
-
-                {/* GPA badge */}
-                <div className="flex flex-col items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800/60 bg-white dark:bg-zinc-900/30 p-5 text-center">
-                  <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400">
-                    3.82
-                  </span>
-                  <span className="text-xs font-bold text-zinc-500 dark:text-zinc-500 mt-1 font-mono uppercase tracking-wider">
-                    GPA / 4.0
-                  </span>
-                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {edu.details}
+                </p>
               </div>
 
               {/* Coursework */}

@@ -198,13 +198,13 @@ export default function EducationEditor() {
               />
 
               <FieldInput
-                label="Details (GPA, Clubs, Activities)"
+                label="Details (Clubs, Activities)"
                 name="details"
                 value={formState.details}
                 onChange={(val) => setFormState(prev => ({ ...prev, details: val }))}
                 type="textarea"
                 rows={2}
-                placeholder="GPA: 3.82. Active member of Computer Science Association..."
+                placeholder="Active member of Computer Science Association..."
               />
 
               {/* Coursework Editor */}
