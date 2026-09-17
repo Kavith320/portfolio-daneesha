@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { 
@@ -12,7 +12,9 @@ import {
   FiAward, 
   FiCode, 
   FiLogOut,
-  FiArrowLeft
+  FiArrowLeft,
+  FiDatabase,
+  FiCloud
 } from "react-icons/fi";
 
 const navItems = [
@@ -28,6 +30,19 @@ const navItems = [
 export default function AdminSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [cloudStatus, setCloudStatus] = useState<{ mongodb?: boolean; cloudinary?: boolean }>({});
+
+  useEffect(() => {
+    fetch("/api/status")
+      .then((res) => res.json())
+      .then((data) => {
+        setCloudStatus({
+          mongodb: data.mongodb?.connected,
+          cloudinary: data.cloudinary?.connected,
+        });
+      })
+      .catch(() => {});
+  }, []);
 
   const handleLogout = () => {
     sessionStorage.removeItem("admin_auth");
@@ -69,6 +84,37 @@ export default function AdminSidebar() {
           );
         })}
       </nav>
+
+      {/* Cloud Status Indicators */}
+      <div className="px-4 py-3 mx-4 mb-2 rounded-xl bg-zinc-900/50 border border-zinc-800/80 flex flex-col gap-2">
+        <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Cloud Services</div>
+        <div className="flex items-center justify-between text-xs font-mono">
+          <div className="flex items-center gap-2 text-zinc-300">
+            <FiDatabase size={12} className={cloudStatus.mongodb ? "text-green-400" : "text-red-400"} /> 
+            MongoDB
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className={`relative flex h-2 w-2`}>
+              {cloudStatus.mongodb && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>}
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${cloudStatus.mongodb ? 'bg-green-500' : 'bg-red-500'}`}></span>
+            </span>
+            <span className="text-[10px] text-zinc-500">{cloudStatus.mongodb ? 'LIVE' : 'DOWN'}</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-between text-xs font-mono">
+          <div className="flex items-center gap-2 text-zinc-300">
+            <FiCloud size={12} className={cloudStatus.cloudinary ? "text-green-400" : "text-red-400"} /> 
+            Cloudinary
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className={`relative flex h-2 w-2`}>
+              {cloudStatus.cloudinary && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>}
+              <span className={`relative inline-flex rounded-full h-2 w-2 ${cloudStatus.cloudinary ? 'bg-green-500' : 'bg-red-500'}`}></span>
+            </span>
+            <span className="text-[10px] text-zinc-500">{cloudStatus.cloudinary ? 'LIVE' : 'DOWN'}</span>
+          </div>
+        </div>
+      </div>
 
       {/* Footer / Logout */}
       <div className="p-4 border-t border-zinc-900">

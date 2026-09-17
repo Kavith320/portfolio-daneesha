@@ -20,12 +20,13 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
       setLoading(true);
       setError(null);
       const res = await fetch("/api/portfolio");
-      if (!res.ok) throw new Error("Failed to connect to database");
+      if (!res.ok) throw new Error("Failed to connect to MongoDB database");
       const json = await res.json();
+      if (json.error) throw new Error(json.error);
       setData(json);
     } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Could not retrieve portfolio data.");
+      console.error("Failed to load portfolio data from MongoDB:", err);
+      setError(err.message || "Could not retrieve portfolio data from MongoDB.");
     } finally {
       setLoading(false);
     }
@@ -63,7 +64,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
             Daneesha Disanayake
           </h2>
           <p className="text-xs font-mono text-zinc-500">
-            // loading dynamic database profile...
+            // connecting to MongoDB database...
           </p>
         </div>
       </div>
@@ -84,7 +85,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
             Database Connection Error
           </h2>
           <p className="text-sm text-zinc-400 mb-6 leading-relaxed">
-            The application was unable to fetch the portfolio content from the database. Please ensure your MongoDB cluster is online and environment credentials are configured.
+            {error || "The application was unable to fetch the portfolio content from MongoDB."}
           </p>
           <button
             onClick={fetchData}

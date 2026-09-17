@@ -1,18 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useAdmin } from "../AdminContext";
-import { FiSave, FiRefreshCw, FiTrash2 } from "react-icons/fi";
+import { FiSave, FiRefreshCw } from "react-icons/fi";
 
 export default function AdminHeader({ title }: { title: string }) {
-  const { isDirty, saveChanges, resetChanges, clearAllOverrides } = useAdmin();
-  const [showConfirmReset, setShowConfirmReset] = useState(false);
-
-  const handleResetToDefault = () => {
-    if (window.confirm("Are you sure you want to delete all edits and restore original developer data from code?")) {
-      clearAllOverrides();
-    }
-  };
+  const { isDirty, saveChanges, resetChanges } = useAdmin();
 
   return (
     <header className="h-16 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-20">
@@ -27,15 +20,6 @@ export default function AdminHeader({ title }: { title: string }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <button
-          onClick={handleResetToDefault}
-          title="Restore factory defaults"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-800 hover:border-red-500/20 text-xs font-semibold text-zinc-400 hover:text-red-400 hover:bg-red-500/5 transition-all cursor-pointer font-mono"
-        >
-          <FiTrash2 size={13} />
-          Reset Factory Defaults
-        </button>
-
         {isDirty && (
           <>
             <button

@@ -26,14 +26,15 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     const load = async () => {
       try {
         const res = await fetch("/api/portfolio");
-        if (!res.ok) throw new Error("Failed to load portfolio data");
+        if (!res.ok) throw new Error("Failed to load portfolio data from database");
         const json = await res.json();
+        if (json.error) throw new Error(json.error);
         if (active) {
           setDbData(json);
           setData(JSON.parse(JSON.stringify(json))); // Deep clone for local edits
         }
-      } catch (err) {
-        console.error("Failed to load portfolio data:", err);
+      } catch (err: any) {
+        console.error("Failed to load portfolio data from MongoDB:", err);
       }
     };
     load();
@@ -71,7 +72,8 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to save changes to database");
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.error || "Failed to save changes to database");
       }
 
       const updated = await res.json();
@@ -103,7 +105,8 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to reset defaults in database");
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.error || "Failed to reset defaults in database");
       }
 
       const updated = await res.json();

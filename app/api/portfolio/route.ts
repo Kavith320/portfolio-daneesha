@@ -5,6 +5,14 @@ import { defaultPortfolioData } from "../../../lib/adminStorage";
 
 export async function GET() {
   try {
+    if (!process.env.MONGO_URI) {
+      console.error("MONGO_URI environment variable is not defined.");
+      return NextResponse.json(
+        { error: "MongoDB configuration is missing. Cannot load portfolio data." },
+        { status: 500 }
+      );
+    }
+
     await connectToDatabase();
     
     // Find the single portfolio document
@@ -19,7 +27,7 @@ export async function GET() {
   } catch (error: any) {
     console.error("GET /api/portfolio failed:", error);
     return NextResponse.json(
-      { error: "Failed to fetch portfolio data: " + (error.message || "Unknown error") },
+      { error: "Failed to fetch portfolio data from MongoDB: " + (error.message || "Unknown error") },
       { status: 500 }
     );
   }
@@ -33,6 +41,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Unauthorized access: Invalid system password." },
         { status: 401 }
+      );
+    }
+
+    if (!process.env.MONGO_URI) {
+      return NextResponse.json(
+        { error: "MONGO_URI is not configured in environment variables. Database edits disabled." },
+        { status: 500 }
       );
     }
 
