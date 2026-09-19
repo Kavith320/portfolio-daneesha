@@ -5,12 +5,18 @@ import { useAdmin } from "../AdminContext";
 import AdminHeader from "../components/AdminHeader";
 import FieldInput from "../components/FieldInput";
 import ImageUpload from "../components/ImageUpload";
+import { FiPlus, FiTrash2 } from "react-icons/fi";
 
 export default function DeveloperInfoEditor() {
   const { data, updateData } = useAdmin();
   const info = data.developerInfo;
+  const stats = info.stats || [
+    { value: "2+", label: "Years Coding" },
+    { value: "10+", label: "Projects Built" },
+    { value: "5+", label: "Technologies" },
+  ];
 
-  const handleChange = (field: keyof typeof info, value: string) => {
+  const handleChange = (field: keyof typeof info, value: any) => {
     updateData((prev) => ({
       ...prev,
       developerInfo: {
@@ -18,6 +24,22 @@ export default function DeveloperInfoEditor() {
         [field]: value,
       },
     }));
+  };
+
+  const handleStatChange = (index: number, field: "value" | "label", value: string) => {
+    const updatedStats = [...stats];
+    updatedStats[index] = { ...updatedStats[index], [field]: value };
+    handleChange("stats", updatedStats);
+  };
+
+  const handleAddStat = () => {
+    const updatedStats = [...stats, { value: "1+", label: "New Metric" }];
+    handleChange("stats", updatedStats);
+  };
+
+  const handleDeleteStat = (index: number) => {
+    const updatedStats = stats.filter((_, i) => i !== index);
+    handleChange("stats", updatedStats);
   };
 
   return (
@@ -125,6 +147,60 @@ export default function DeveloperInfoEditor() {
               rows={3}
               placeholder="Detail your degree, focus, and university..."
             />
+          </div>
+        </div>
+
+        {/* Key Statistics / Counters Section */}
+        <div>
+          <div className="flex justify-between items-end">
+            <div>
+              <h2 className="text-xl font-bold text-white tracking-tight">Key Statistics &amp; Metrics</h2>
+              <p className="text-sm text-zinc-500 mt-1 font-mono">// about page metric counters (e.g. Years Coding, Projects Built)</p>
+            </div>
+            <button
+              onClick={handleAddStat}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/20 rounded-xl text-xs font-semibold font-mono transition-all cursor-pointer"
+            >
+              <FiPlus size={14} /> Add Metric
+            </button>
+          </div>
+
+          <div className="mt-4 bg-zinc-900/20 border border-zinc-800/80 rounded-2xl p-6 space-y-4">
+            {stats.length === 0 ? (
+              <p className="text-xs text-zinc-500 italic font-mono text-center py-4">No statistics counters defined. Click &quot;Add Metric&quot; to create one.</p>
+            ) : (
+              stats.map((stat, idx) => (
+                <div key={idx} className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-xl border border-zinc-800/50 bg-zinc-950/40">
+                  <div className="w-full sm:w-1/3">
+                    <FieldInput
+                      label={`Value (Metric ${idx + 1})`}
+                      name={`stat-val-${idx}`}
+                      value={stat.value}
+                      onChange={(val) => handleStatChange(idx, "value", val)}
+                      placeholder="e.g. 2+ or 10+"
+                    />
+                  </div>
+                  <div className="w-full sm:w-2/3">
+                    <FieldInput
+                      label="Label / Description"
+                      name={`stat-lbl-${idx}`}
+                      value={stat.label}
+                      onChange={(val) => handleStatChange(idx, "label", val)}
+                      placeholder="e.g. Years Coding"
+                    />
+                  </div>
+                  <div className="self-end sm:self-center pt-2 sm:pt-4">
+                    <button
+                      onClick={() => handleDeleteStat(idx)}
+                      className="p-2.5 rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all cursor-pointer"
+                      title="Delete metric"
+                    >
+                      <FiTrash2 size={16} />
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

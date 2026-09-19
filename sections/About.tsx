@@ -7,15 +7,17 @@ import SectionTitle from "../components/SectionTitle";
 import { usePortfolio } from "../components/PortfolioContext";
 import { FiCode, FiAward, FiBookOpen, FiZap } from "react-icons/fi";
 
-const stats = [
-  { value: "2+", label: "Years Coding" },
-  { value: "10+", label: "Projects Built" },
-  { value: "5+", label: "Technologies" },
-];
-
 export default function About() {
   const { data } = usePortfolio();
   const developerInfo = data.developerInfo;
+
+  const stats = developerInfo.stats && developerInfo.stats.length > 0
+    ? developerInfo.stats
+    : [
+        { value: "2+", label: "Years Coding" },
+        { value: "10+", label: "Projects Built" },
+        { value: "5+", label: "Technologies" },
+      ];
 
   const cards = [
     {

@@ -2,6 +2,11 @@
 // These are the serializable (JSON-safe) types used throughout the app.
 // Icons are resolved separately via lib/skillIcons.ts
 
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
 export interface DeveloperInfo {
   name: string;
   title: string;
@@ -17,6 +22,7 @@ export interface DeveloperInfo {
   twitter: string;
   avatarUrl: string;
   heroVideoUrl?: string;
+  stats?: StatItem[];
 }
 
 export interface SkillItem {

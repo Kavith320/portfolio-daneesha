@@ -37,6 +37,11 @@ export const developerInfo = {
   twitter: "https://twitter.com/daneeshadev",
   avatarUrl: "https://res.cloudinary.com/dos0n84b0/image/upload/v1784532552/portfolio_assets/e33nvpsuvu5tw8n3jnph.jpg",
   heroVideoUrl: "https://res.cloudinary.com/dos0n84b0/video/upload/v1784534999/portfolio_assets/vtweypvrclsa3nvi3mmj.mp4",
+  stats: [
+    { value: "2+", label: "Years Coding" },
+    { value: "10+", label: "Projects Built" },
+    { value: "5+", label: "Technologies" },
+  ],
 };
 
 export const skills = [

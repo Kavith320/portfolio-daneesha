@@ -1,5 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
+const StatItemSchema = new Schema({
+  value: { type: String, required: true },
+  label: { type: String, required: true }
+}, { _id: false });
+
 const DeveloperInfoSchema = new Schema({
   name: { type: String, required: true },
   title: { type: String, required: true },
@@ -14,7 +19,8 @@ const DeveloperInfoSchema = new Schema({
   linkedin: { type: String, required: true },
   twitter: { type: String, required: true },
   avatarUrl: { type: String, required: true },
-  heroVideoUrl: { type: String }
+  heroVideoUrl: { type: String },
+  stats: [StatItemSchema]
 }, { _id: false });
 
 const SkillItemSchema = new Schema({

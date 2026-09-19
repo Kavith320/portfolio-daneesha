@@ -45,7 +45,11 @@ export function loadPortfolioData(): PortfolioData {
       const parsed = JSON.parse(data);
       // Basic merge/fallback check to ensure schema compatibility
       return {
-        developerInfo: { ...defaultPortfolioData.developerInfo, ...parsed.developerInfo },
+        developerInfo: { 
+          ...defaultPortfolioData.developerInfo, 
+          ...parsed.developerInfo,
+          stats: parsed.developerInfo?.stats || defaultPortfolioData.developerInfo.stats
+        },
         skills: parsed.skills || defaultPortfolioData.skills,
         projects: parsed.projects || defaultPortfolioData.projects,
         experience: parsed.experience || defaultPortfolioData.experience,
